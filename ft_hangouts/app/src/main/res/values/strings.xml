@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ft_hangouts</string>
+    <string name="add_cont">Add contact</string>
+    <string name="LastName">LastName</string>
+    <string name="Name">Name</string>
+    <string name="PhoneNumber">Phone Number</string>
+    <string name="EmailAddress">Email address</string>
+    <string name="Address">Address</string>
+    <string name="action_settings">Color header</string>
+    <string name="hred">red</string>
+    <string name="hgreen">green</string>
+    <string name="hblue">blue</string>
+    <string name="ModifB">Modifier</string>
+    <string name="SuppB">Supprimer</string>
+
+</resources>

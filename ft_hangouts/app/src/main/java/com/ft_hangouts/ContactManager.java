@@ -27,7 +27,8 @@ public class ContactManager extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_Users + "("
-                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_LASTNAME + " TEXT,"
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + KEY_LASTNAME + " TEXT,"
                 + KEY_NAME + " TEXT,"
                 + KEY_PHONE + " TEXT,"
                 + KEY_EMAIL + " TEXT,"
@@ -65,7 +66,7 @@ public class ContactManager extends SQLiteOpenHelper
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> userList = new ArrayList<>();
-        String query = "SELECT lastname, name, phone, email, adress FROM "+ TABLE_Users;
+        String query = "SELECT lastname, name, phone, email, adress, id FROM "+ TABLE_Users;
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
             HashMap<String,String> user = new HashMap<>();
@@ -74,6 +75,7 @@ public class ContactManager extends SQLiteOpenHelper
             user.put("phone",cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
             user.put("email",cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
             user.put("adress",cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+            user.put("id",cursor.getString(cursor.getColumnIndex(KEY_ID)));
             userList.add(user);
         }
         return  userList;
@@ -96,7 +98,7 @@ public class ContactManager extends SQLiteOpenHelper
         }
         return  userList;
     }
-    // Delete User Details A FAIRE DANS LA FICHE DETAILLER D'UN PROFIL
+    // Delete User Details
     public void DeleteUser(int userid)
     {
         SQLiteDatabase db = this.getWritableDatabase();

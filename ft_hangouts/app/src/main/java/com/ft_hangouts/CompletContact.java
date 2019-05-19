@@ -3,6 +3,7 @@ package com.ft_hangouts;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,8 +37,7 @@ public class CompletContact extends AppCompatActivity
         setContentView(R.layout.complet_contact);
 
         final ContactManager db = new ContactManager(this);
-        ArrayList<HashMap<String, String>> userList = db.GetUserByUserId(MainActivity.IDCONTACT + 1);
-
+        ArrayList<HashMap<String, String>> userList = db.GetUserByUserId(MainActivity.IDCONTACT);
         String sum = "";
         for (HashMap<String, String> hash : userList)
         {
@@ -57,17 +57,17 @@ public class CompletContact extends AppCompatActivity
         tv3.setText( arr[2] );
         tv4.setText( arr[3] );
         tv5.setText( arr[4] );
-        /*final Button button = findViewById(R.id.buttonS);
+        final Button button = findViewById(R.id.buttonS);
         button.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
             {
-                db.DeleteUser(MainActivity.IDCONTACT + 1);
+                db.DeleteUser(MainActivity.IDCONTACT);
                 Intent intent = new Intent(CompletContact.this, MainActivity.class);
                 startActivity(intent);
 
             }
-        });*/
+        });
         //Pour supprimer ATTENTION, probleme d'id quand on supprime puis recrée un Contact, a voir ;/
     }
 }

@@ -26,4 +26,9 @@
         android:layout_alignParentRight="true"
         android:textColor="#343434"
         android:textSize="14dp" />
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/ids"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

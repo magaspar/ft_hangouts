@@ -13,13 +13,19 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
 {
     public static int IDCONTACT = 0;
+    public static String currentDateandTime = "";
+    boolean shouldExecuteOnResume;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,11 +43,7 @@ public class MainActivity extends AppCompatActivity
         {
             getTheme().applyStyle(R.style.OverlayPrimaryColorGreen, true);
         }
-        else
-        {
-            //okok
-        }
-
+        shouldExecuteOnResume = false;
         setContentView(R.layout.activity_main);
 
 
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -91,5 +94,29 @@ public class MainActivity extends AppCompatActivity
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        if(shouldExecuteOnResume)
+        {
+            Toast.makeText(getApplicationContext(), currentDateandTime, Toast.LENGTH_LONG).show();
+        } else{
+            shouldExecuteOnResume = true;
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        currentDateandTime = sdf.format(new Date());
+
     }
 }

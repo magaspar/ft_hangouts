@@ -105,13 +105,16 @@ public class ContactManager extends SQLiteOpenHelper
         db.delete(TABLE_Users, KEY_ID+" = ?",new String[]{String.valueOf(userid)});
         db.close();
     }
-    // Update User Details A FAIRE COMME AU DESSUS
-    public int UpdateUserDetails(String name, String phone, int id)
+    // Update User Details, faire une page ou on recup les valeurs de la db pour remplir les champs au prelabale et le laisser changer ensuite
+    public int UpdateUserDetails(String name, String phone, String lastname, String email, String adress, int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cVals = new ContentValues();
         cVals.put(KEY_NAME, name);
         cVals.put(KEY_PHONE, phone);
+        cVals.put(KEY_LASTNAME, lastname);
+        cVals.put(KEY_EMAIL, email);
+        cVals.put(KEY_ADDRESS, adress);
         int count = db.update(TABLE_Users, cVals, KEY_ID+" = ?",new String[]{String.valueOf(id)});
         return  count;
     }

@@ -12,5 +12,6 @@
     <string name="hblue">blue</string>
     <string name="ModifB">Modifier</string>
     <string name="SuppB">Supprimer</string>
+    <string name="Message">SMS</string>
 
 </resources>

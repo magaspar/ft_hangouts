@@ -2,7 +2,6 @@ package com.ft_hangouts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -79,7 +77,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        //ajoute les entrées de menu_test à l'ActionBar
         getMenuInflater().inflate(R.menu.menu_color, menu);
         return true;
     }
@@ -104,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         if(shouldExecuteOnResume)
         {
             Toast.makeText(getApplicationContext(), currentDateandTime, Toast.LENGTH_LONG).show();
-        } else{
+        } else {
             shouldExecuteOnResume = true;
         }
 

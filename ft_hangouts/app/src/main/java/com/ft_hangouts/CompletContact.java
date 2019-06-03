@@ -31,10 +31,6 @@ public class CompletContact extends AppCompatActivity
         {
             getTheme().applyStyle(R.style.OverlayPrimaryColorGreen, true);
         }
-        else
-        {
-            //okok
-        }
         setContentView(R.layout.complet_contact);
 
         final ContactManager db = new ContactManager(this);

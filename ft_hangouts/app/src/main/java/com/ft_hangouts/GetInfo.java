@@ -31,10 +31,6 @@ public class GetInfo extends AppCompatActivity
         {
             getTheme().applyStyle(R.style.OverlayPrimaryColorGreen, true);
         }
-        else
-        {
-            //okok
-        }
         setContentView(R.layout.get_info);
 
         mButton = findViewById(R.id.button);
@@ -65,10 +61,11 @@ public class GetInfo extends AppCompatActivity
                 tmpEmailAdd = mEditEmailAdd.getText().toString();
                 tmpAdd = mEditAdres.getText().toString();
 
-
-                ContactManager dbHandler = new ContactManager(GetInfo.this);
-                dbHandler.insertUserDetails(tmpLastName,tmpName,tmpPhoneNum,tmpEmailAdd,tmpAdd);
-
+                if (!tmpLastName.matches("") && !tmpName.matches("") && !tmpPhoneNum.matches("") && !tmpEmailAdd.matches("") && !tmpAdd.matches(""))
+                {
+                    ContactManager dbHandler = new ContactManager(GetInfo.this);
+                    dbHandler.insertUserDetails(tmpLastName,tmpName,tmpPhoneNum,tmpEmailAdd,tmpAdd);
+                }
                 Intent intent = new Intent(GetInfo.this, MainActivity.class);
                 startActivity(intent);
             }

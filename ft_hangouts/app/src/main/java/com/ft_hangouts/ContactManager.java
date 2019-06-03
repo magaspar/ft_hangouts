@@ -38,30 +38,21 @@ public class ContactManager extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-        // Drop older table if exist
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_Users);
-        // Create tables again
         onCreate(db);
     }
-    // **** CRUD (Create, Read, Update, Delete) Operations ***** //
-
-    // Adding new User Details
     void insertUserDetails(String lastname, String name, String phone, String email, String adress)
     {
-        //Get the Data Repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
-        //Create a new map of values, where column names are the keys
         ContentValues cValues = new ContentValues();
         cValues.put(KEY_LASTNAME, lastname);
         cValues.put(KEY_NAME, name);
         cValues.put(KEY_PHONE, phone);
         cValues.put(KEY_EMAIL, email);
         cValues.put(KEY_ADDRESS, adress);
-        // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(TABLE_Users,null, cValues);
         db.close();
     }
-    // Get User Details
     public ArrayList<HashMap<String, String>> GetUsers()
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -80,7 +71,6 @@ public class ContactManager extends SQLiteOpenHelper
         }
         return  userList;
     }
-    // Get User Details based on userid
     public ArrayList<HashMap<String, String>> GetUserByUserId(int userid)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -98,14 +88,12 @@ public class ContactManager extends SQLiteOpenHelper
         }
         return  userList;
     }
-    // Delete User Details
     public void DeleteUser(int userid)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_Users, KEY_ID+" = ?",new String[]{String.valueOf(userid)});
         db.close();
     }
-    // Update User Details, faire une page ou on recup les valeurs de la db pour remplir les champs au prelabale et le laisser changer ensuite
     public int UpdateUserDetails(String name, String phone, String lastname, String email, String adress, int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -28,10 +28,6 @@ public class UpdateUser extends AppCompatActivity
         {
             getTheme().applyStyle(R.style.OverlayPrimaryColorGreen, true);
         }
-        else
-        {
-            //okok
-        }
         setContentView(R.layout.update_user);
 
         final ContactManager db = new ContactManager(this);
@@ -50,11 +46,11 @@ public class UpdateUser extends AppCompatActivity
         final EditText tv3 = findViewById( R.id.CPhone );
         final EditText tv4 = findViewById( R.id.CEmail );
         final EditText tv5 = findViewById( R.id.CAdress );
-        tv1.setText( arr[0] );
-        tv2.setText( arr[1] );
-        tv3.setText( arr[2] );
+        tv1.setText( arr[1] );
+        tv2.setText( arr[0] );
+        tv3.setText( arr[4] );
         tv4.setText( arr[3] );
-        tv5.setText( arr[4] );
+        tv5.setText( arr[2] );
 
         final Button buttonM = findViewById(R.id.buttonM);
         buttonM.setOnClickListener(new View.OnClickListener()

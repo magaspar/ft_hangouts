@@ -32,7 +32,7 @@ public class CompletContact extends AppCompatActivity
             getTheme().applyStyle(R.style.OverlayPrimaryColorGreen, true);
         }
         setContentView(R.layout.complet_contact);
-
+        MainActivity.shouldExecuteOnResume = false;
         final ContactManager db = new ContactManager(this);
         ArrayList<HashMap<String, String>> userList = db.GetUserByUserId(MainActivity.IDCONTACT);
         String sum = "";

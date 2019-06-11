@@ -30,7 +30,6 @@ public class UpdateUser extends AppCompatActivity
             getTheme().applyStyle(R.style.OverlayPrimaryColorGreen, true);
         }
         setContentView(R.layout.update_user);
-
         final ContactManager db = new ContactManager(this);
         ArrayList<HashMap<String, String>> userList = db.GetUserByUserId(MainActivity.IDCONTACT);
         String sum = "";

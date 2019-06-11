@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 {
     public static int IDCONTACT = 0;
     public static String currentDateandTime = "";
-    boolean shouldExecuteOnResume;
+    static boolean shouldExecuteOnResume = false;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity
         {
             getTheme().applyStyle(R.style.OverlayPrimaryColorGreen, true);
         }
-        shouldExecuteOnResume = false;
         setContentView(R.layout.activity_main);
 
 
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity
                 startActivity(i1);
             }
         });
-
         final Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener()
         {
@@ -78,7 +76,6 @@ public class MainActivity extends AppCompatActivity
             {
                 Intent intent = new Intent(MainActivity.this, GetInfo.class);
                 startActivity(intent);
-
             }
         });
     }
@@ -110,19 +107,16 @@ public class MainActivity extends AppCompatActivity
         if(shouldExecuteOnResume)
         {
             Toast.makeText(getApplicationContext(), currentDateandTime, Toast.LENGTH_LONG).show();
-        } else {
-            shouldExecuteOnResume = true;
         }
-
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
 
         super.onPause();
-
+        shouldExecuteOnResume = true;
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         currentDateandTime = sdf.format(new Date());
-
     }
 }
